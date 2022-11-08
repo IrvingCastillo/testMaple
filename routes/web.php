@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+/*
+    Se creó un usuario con mi nombre; el correo para entrar es "irving@gmail.com" y la contraseña es "password"
+    usuario de la base de datos "root" y no cuenta con contraseña
+
+*/
+
 Route::get('/', function () {
     return view('welcome');
 });
