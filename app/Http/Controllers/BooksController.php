@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Books;
 use Illuminate\Http\Request;
 
 class BooksController extends Controller
@@ -9,7 +10,7 @@ class BooksController extends Controller
 
     /**
      * INSTRUCTIONS
-     * 
+     *
      * - Create the Books Model with Migrations, Factory and Seeder
      * - Table books columns: id,title,category,author,realease_date,publish_date
      * - php artisan db:seed should populate the User and Books tables
@@ -17,7 +18,7 @@ class BooksController extends Controller
      * - The datatable should get the info from BooksController@api
      * - The dates should be shown in the format d/M/y
      * - Extra points for bootstrap 4 styling
-     * 
+     *
      */
 
 
@@ -26,7 +27,7 @@ class BooksController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard');
     }
 
     /**
@@ -34,6 +35,8 @@ class BooksController extends Controller
      */
     public function api(Request $request)
     {
-        // 
+        $books = Books::all();
+        // dd($books);
+        return response()->json(['books' => $books]);
     }
 }

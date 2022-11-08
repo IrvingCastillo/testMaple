@@ -15,3 +15,42 @@
         </div>
     </div>
 </x-app-layout>
+
+<div class="container">
+    <table id="books" class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Categoría</th>
+                <th>Fecha de lanzamiento</th>
+                <th>Fecha de publicación</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@stack('scriptDataTable')
+<script>
+
+    $(document).ready(function(){
+        $('#books').DataTable({
+            // serverSide: true,
+            language: {
+                url: 'https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+            },
+            ajax : {
+                url: "{{ url('getBooks') }}",
+                dataSrc: 'books'
+            },
+            columns: [
+                {data: 'title'},
+                {data: 'author'},
+                {data: 'category'},
+                {data: 'release_date'},
+                {data: 'publish_date'}
+            ]
+        });
+    });
+
+</script>
