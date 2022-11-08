@@ -4,21 +4,11 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
-                </div>
-            </div>
-        </div>
-    </div>
 </x-app-layout>
 
-<div class="container">
-    <table id="books" class="table table-responsive">
-        <thead>
+<div class="container text-center mb-5 ">
+    <table id="books" class="table table-responsive table-hover table-responsive">
+        <thead class="thead-dark">
             <tr>
                 <th>Título</th>
                 <th>Autor</th>
@@ -37,7 +27,8 @@
         $('#books').DataTable({
             // serverSide: true,
             language: {
-                url: 'https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-MX.json'
+                url: 'https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json'
+
             },
             ajax : {
                 url: "{{ url('getBooks') }}",
@@ -47,8 +38,12 @@
                 {data: 'title'},
                 {data: 'author'},
                 {data: 'category'},
-                {data: 'release_date'},
-                {data: 'publish_date'}
+                {data: 'release_date',
+                    render: DataTable.render.datetime('D/M/YYYY')
+                    // render: DataTable.datetime('D MMM YYYY')
+                },
+                {data: 'publish_date',
+                render: DataTable.render.datetime('D/M/YYYY')}
             ]
         });
     });

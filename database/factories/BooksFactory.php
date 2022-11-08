@@ -21,7 +21,7 @@ class BooksFactory extends Factory
             'category' => $this->faker->sentence(1, false),
             'author' => $this->faker->sentence(4, false),
             'release_date' => $this->faker->dateTimeThisYear('+3 month'),
-            'publish_date' => $this->faker->dateTimeThisYear('+1 months'),
+            'publish_date' => $this->faker->dateTimeThisYear('-12 months'),
         ];
     }
 }

@@ -36,7 +36,6 @@ class BooksController extends Controller
     public function api(Request $request)
     {
         $books = Books::all();
-        // dd($books);
         return response()->json(['books' => $books]);
     }
 }
